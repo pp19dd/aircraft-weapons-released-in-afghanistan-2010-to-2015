@@ -70,6 +70,16 @@ var paper;
 var W = <?php echo W ?>;
 var H = <?php echo H ?>;
 
+function number(input) {
+    var a = input.toString();
+    var r = "";
+    for( var i = 0; i < a.length; i++) {
+        var c = parseInt(a.substr(i,1));
+        r += localizations[language].numerals[c]
+    }
+    return(r);
+}
+
 <?php readfile("styles.js"); ?>
 
 <?php readfile("plotyear.js"); ?>
