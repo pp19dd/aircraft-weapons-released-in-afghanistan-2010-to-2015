@@ -1,18 +1,25 @@
 <?php
+if( !isset($language) ) {
+    $language = "en";
+}
+if( !isset($localizations) ) {
+    $localizations = json_decode(file_get_contents("localization.js"));
+}
+
 define( "W", 974 );
 define( "H", 550 );
 $data = <<< EOF
-Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec 
-156 154 175 197 300 457 325 416 739 1043 866 272 
-405 341 337 339 426 610 695 516 597 663 308 174 
-170 116 229 252 406 521 504 588 385 414 297 202 
-193 297 248 284 368 337 256 158 232 189 118 76 
-92 114 93 115 164 272 205 437 441 217 87 126 
-40 36 52 30 41        
+ Jan. Feb. Mar. Apr. May. Jun. Jul. Aug. Sep. Oct. Nov. Dec
+ 156. 154. 175. 197. 300. 457. 325. 416. 739.1043. 866. 272.
+ 405. 341. 337. 339. 426. 610. 695. 516. 597. 663. 308. 174.
+ 170. 116. 229. 252. 406. 521. 504. 588. 385. 414. 297. 202.
+ 193. 297. 248. 284. 368. 337. 256. 158. 232. 189. 118. 076.
+  92. 114.  93. 115. 164. 272. 205. 437. 441. 217. 087. 126.
+  40.  36.  52.  30.  41
 EOF;
 
 // mind the spaces after the numbers, needed as delim
-$data = explode(" ", trim($data));
+$data = explode(".", trim($data));
 $data = array_map(function($e) {
    return( intval( trim($e) ) );
 }, $data);
@@ -35,14 +42,15 @@ $key = array_shift($by_year);
 
 <div class="awr_graphic">
 
-<h1>Aircraft Weapons Released in Afghanistan 2010-2015</h1>
-
-<p>Top chart shows number of munitions expended over the course of five years in Afghanistan, by both piloted and remotely piloted aircraft.  Bottom chart shows number of casualties (killed and injured) resulting from aerial operations, as cataloged by UNAMA.</p>
+<div dir="<?php echo $localizations->$language->dir ?>">
+<h1><?php echo $localizations->$language->title->article_title ?></h1>
+<p><?php echo $localizations->$language->title->introduction ?></p>
+</div>
 
 <div id="d_paper"></div>
 
 <script type="text/javascript">
-var language = "en";    // en, da, pa
+var language = "<?php echo $language ?>";    // en, prs, pus
 var by_month = <?php echo json_encode($by_month) ?>;
 var by_year = <?php echo json_encode($by_year) ?>;
 var max = <?php echo max($by_month) ?>;
@@ -56,7 +64,7 @@ var years = [];
 
 <?php readfile("casualties.js"); ?>
 
-<?php readfile("localization.js"); ?>
+var localizations = <?php readfile("localization.js"); ?>;
 
 var paper;
 var W = <?php echo W ?>;
@@ -77,15 +85,15 @@ $(document).ready(function() {
 
     graph_title(W, 30, localizations[language].title.top);
     graph_title(W, H - 15, localizations[language].title.bottom);
-    
+
     main_tooltip.tooltip_bgr = paper.rect(0,0,30,30).attr(styles.tooltip_bgr);
     main_tooltip.tooltip = paper.text(0,0,"tooltip").attr(styles.tooltip);
-    
+
     main_tooltip.tooltip_bgr.attr({ opacity: 0 });
     main_tooltip.tooltip.attr({ opacity: 0 });
-    
+
     var relative_block_position = 0;
-    
+
     for( var year in by_year )(function(year, data, i) {
         var temp = new plotYear();
 
@@ -96,7 +104,7 @@ $(document).ready(function() {
             width: 10
         };
         year_divider.total = year_divider.count * year_divider.width;
-        
+
         var cols = (i < 5) ? 12 : 5; // data stops in middle of a year
         var block_width = cols * ((W - year_divider.total) / columns);
 
@@ -130,10 +138,10 @@ $(document).ready(function() {
             block_width,
             temp
         );
-        
+
         // this is a running position on a flat graph so need more information
         relative_block_position += block_width + year_divider.width;
-        
+
         // store in case we conveniently need it later...
         years.push( temp );
     })(2010 + parseInt(year), by_year[year], year);

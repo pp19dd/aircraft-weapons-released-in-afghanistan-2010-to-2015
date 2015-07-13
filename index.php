@@ -1,7 +1,11 @@
+<?php
+$language = "prs"; // en prs pus
+$localizations = json_decode(file_get_contents("localization.js"));
+?>
 <!doctype html>
 <html>
 <head>
-<title>Weapons Released 2010-2015, Operation Freedom Sentinel / Resolute Support Mission</title>
+<title><?php echo $localizations->$language->title->article_title ?></title>
 <meta charset="utf-8" />
 <style type="text/css">
 #d_paper { background-color: white }
