@@ -67,8 +67,11 @@ function plot_aerial_casualties(x, y, w, h, value, max_value, i, block_width, pa
         number_label.attr(styles.ct_last);
         number_label.translate(0,-30);
         var geo = text_label.getBBox();
-        text_label.translate(-geo.width+10,-30);
-        text_label.attr(styles.ct_tl_last);
+        //text_label.translate(0,-30);
+        text_label.attr(styles.ct_tl_last).attr({
+            x: x + w - 50,
+            y: y + (h - height) -15
+        });
     }
 
     // hide everything but the first one to start
