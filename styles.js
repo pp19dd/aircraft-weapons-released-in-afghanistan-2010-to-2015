@@ -68,3 +68,16 @@ var styles = {
         "stroke-width": 0
     }
 }
+
+function language_style_customizations(language) {
+    if( language == "en") return(false);
+
+    styles.graph_label_bgr["opacity"] = 0.5;
+    styles.year["font-size"] = 22;
+    styles.tooltip["font-size"] = 22;
+    styles.ct["font-size"] = 20;
+    styles.ctl["font-size"] = 22;
+
+
+    //styles.year["font-weight"] = "bold";
+}

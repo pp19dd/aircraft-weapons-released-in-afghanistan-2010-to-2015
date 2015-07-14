@@ -86,6 +86,8 @@ function write_number(input) {
 
 <?php readfile("styles.js"); ?>
 
+language_style_customizations(language);
+
 <?php readfile("plotyear.js"); ?>
 
 $(document).ready(function() {
