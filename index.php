@@ -1,5 +1,6 @@
 <?php
 $language = "prs"; // en prs pus
+if( isset( $_GET['language'] ) ) $language = $_GET['language'];
 $localizations = json_decode(file_get_contents("localization.js"));
 ?>
 <!doctype html>
@@ -9,7 +10,7 @@ $localizations = json_decode(file_get_contents("localization.js"));
 <meta charset="utf-8" />
 <style type="text/css">
 #d_paper { background-color: white }
-.awr_graphic { padding:10px; background-color: ghostwhite }
+.awr_graphic { background-color: ghostwhite }
 </style>
 </head>
 <body>

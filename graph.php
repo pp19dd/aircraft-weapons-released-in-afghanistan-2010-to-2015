@@ -6,10 +6,14 @@ if( !isset($localizations) ) {
     $localizations = json_decode(file_get_contents("localization.js"));
 }
 
+if( isset( $_GET['language'] ) ) $language = $_GET['language'];
+
 define( "W", 974 );
 define( "H", 550 );
+
+// this is a very fragile data representation
 $data = <<< EOF
- Jan. Feb. Mar. Apr. May. Jun. Jul. Aug. Sep. Oct. Nov. Dec
+ Jan. Feb. Mar. Apr. May. Jun. Jul. Aug. Sep. Oct. Nov. Dec.
  156. 154. 175. 197. 300. 457. 325. 416. 739.1043. 866. 272.
  405. 341. 337. 339. 426. 610. 695. 516. 597. 663. 308. 174.
  170. 116. 229. 252. 406. 521. 504. 588. 385. 414. 297. 202.
@@ -70,7 +74,7 @@ var paper;
 var W = <?php echo W ?>;
 var H = <?php echo H ?>;
 
-function number(input) {
+function write_number(input) {
     var a = input.toString();
     var r = "";
     for( var i = 0; i < a.length; i++) {

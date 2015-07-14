@@ -20,7 +20,7 @@ var casualties = {
 function aerial_casualties_highlight_year(year_i, show) {
     var p = casualties.e[year_i];
     var column = p.column;
-    
+
     column.stop().animate(
         show ? styles.mouseover : styles.c,
         animation_length, "<>"
@@ -29,10 +29,10 @@ function aerial_casualties_highlight_year(year_i, show) {
     // on load, first label is shown
     if( casualties.first_hover == true ) {
         casualties.first_hover == false;
-        
+
         years[0].justHide(casualties.e[0].text_label);
     }
-    
+
     if( show == true ) {
         p.text_label.attr({ fill: styles.mouseover.fill } );
         years[0].justShow(p.text_label, 1);
@@ -52,12 +52,12 @@ function plot_aerial_casualties(x, y, w, h, value, max_value, i, block_width, pa
         height
     ).attr(styles.c);
 
-    //paper.text( x, y + height + 20, value); 
+    //paper.text( x, y + height + 20, value);
     // var number_label = paper.text( x + 5 , y + 15, value);
-    var number_label = paper.text( x + 5 , y + (h - height) + 15, value);
-    
-    number_label.attr(styles.ct); 
-    
+    var number_label = paper.text( x + 5 , y + (h - height) + 15, write_number(value) );
+
+    number_label.attr(styles.ct);
+
     var text_label = paper.text(
         x + w + 5, y + (h - height) + 15, localizations[language].casualties
     ).attr( styles.ct).attr(styles.ctl);
@@ -70,22 +70,22 @@ function plot_aerial_casualties(x, y, w, h, value, max_value, i, block_width, pa
         text_label.translate(-geo.width+10,-30);
         text_label.attr(styles.ct_tl_last);
     }
-    
+
     // hide everything but the first one to start
     if( i != 0 ) {
         text_label.attr({opacity:0});
     }
-    
+
     var event_trigger = paper.rect(
        x, y, block_width, h
     ).attr({fill: "red", opacity: 0});
-    
+
     event_trigger.mouseover(function() {
         aerial_casualties_highlight_year(i, true);
     }).mouseout(function() {
         aerial_casualties_highlight_year(i, false);
     });
-    
+
     casualties.e.push({
         column: column,
         number_label: number_label,
