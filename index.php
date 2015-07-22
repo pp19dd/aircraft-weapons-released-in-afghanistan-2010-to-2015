@@ -1,5 +1,5 @@
 <?php
-$language = "prs"; // en prs pus
+$language = "en"; // en prs pus
 if( isset( $_GET['language'] ) ) $language = $_GET['language'];
 $localizations = json_decode(file_get_contents("localization.js"));
 ?>
