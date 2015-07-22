@@ -10,7 +10,6 @@ $localizations = json_decode(file_get_contents("localization.js"));
 <meta charset="utf-8" />
 <style type="text/css">
 #d_paper { background-color: white }
-.awr_graphic { background-color: ghostwhite }
 </style>
 </head>
 <body>
