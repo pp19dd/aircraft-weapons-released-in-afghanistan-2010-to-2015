@@ -34,10 +34,6 @@ $key = array_shift($by_year);
 <style type="text/css">
 .awr_graphic { font-family: Arial,Helvetica,sans-serif }
 #d_paper { width: <?php echo W ?>px; height:<?php echo H ?>px; }
-.casualties { }
-.year { width: 179px; float: left; }
-.label { font-size: 24px; }
-.count { font-size: 36px; color: gray; }
 </style>
 
 <script type="text/javascript" src="http://www.voanews.com/MediaAssets2/projects/voadigital/shared/js/raphael-2.1.2.min.js"></script>
