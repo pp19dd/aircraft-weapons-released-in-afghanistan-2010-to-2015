@@ -60,9 +60,12 @@ plotYear.prototype.getColor = function(i) {
 
 plotYear.prototype.draw = function() {
     for( var i = 0; i < this.data.length; i++ )(function(that, i) {
-
         var geometry = that.getGeometry(i);
         var color = that.getColor(i);
+
+        var offset_x = 0;
+        if( geometry.x <= 20 ) offset_x = 15;
+        if( geometry.x >= 940 ) offset_x = -10
 
         // actual visible item
         var x = paper.rect(
@@ -74,7 +77,8 @@ plotYear.prototype.draw = function() {
 
         // create tooltip containers, generic function does the rest
         var tooltip = paper.text(
-            geometry.x + (geometry.w/2), geometry.y - 20,
+            geometry.x + (geometry.w/2) + offset_x,
+            geometry.y - 20,
             ""//that.data[i]
         ).attr( styles.tooltip );
         var tooltip_bgr = paper.rect(0,0,1,1).attr(styles.tooltip_bgr);

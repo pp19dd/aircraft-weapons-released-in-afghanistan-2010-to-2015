@@ -8,7 +8,7 @@ if( !isset($localizations) ) {
 
 if( isset( $_GET['language'] ) ) $language = $_GET['language'];
 
-define( "W", 974 );
+define( "W", 960 );
 define( "H", 550 );
 
 // this is a very fragile data representation
@@ -90,7 +90,7 @@ $(document).ready(function() {
     paper = Raphael("d_paper", W, H);
 
     function graph_title(x, y, text) {
-        var t = paper.text(x, y, text).attr(styles.graph_label);
+        var t = paper.text(x - 10, y, text).attr(styles.graph_label);
         var g = t.getBBox();
         paper.rect(g.x, g.y, g.width, g.height).attr(styles.graph_label_bgr);
     }
