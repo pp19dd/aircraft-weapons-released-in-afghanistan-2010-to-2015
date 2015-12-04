@@ -165,7 +165,7 @@ $(document).ready(function() {
 <p>Data Sources:</p>
 
 <ul>
-    <li><a href="http://www.unama.unmissions.org/Portals/UNAMA/human%20rights/2015/2014-Annual-Report-on-Protection-of-Civilians-Final.pdf">UNAMA 2014 Annual Report on Protection of Civilians</a></li>
+    <li><a href="https://unama.unmissions.org/Portals/UNAMA/human%20rights/2015/2014-Annual-Report-on-Protection-of-Civilians-Final.pdf">UNAMA 2014 Annual Report on Protection of Civilians</a></li>
     <li><a href="http://unama.unmissions.org/Default.aspx?ctl=Details&tabid=12254&mid=15756&ItemID=38675">Latest UNAMA figures, April 2015</a></li>
     <li><a href="http://www.afcent.af.mil/Portals/1/Documents/Airpower%20summary/31%20May%202015%20Airpower%20Summary.pdf">United States Air Forces Central Command</a></li>
 </ul>
